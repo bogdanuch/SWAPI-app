@@ -1,14 +1,12 @@
 import React from 'react';
 import '../App.css';
-import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
+import {Accordion, AccordionSummary} from "@mui/material";
 import {useDrag} from 'react-dnd';
-import ElementList from "./ElementList";
-import {useApiDataContext} from "../libs/ApiDataProvider";
+import AccordionDetail from "./AccordionDetail";
 
 const accordionSummaryStyle = {borderBottom: '1px black solid'}
 
 function CharacterBox({character}) {
-    const {filmData, speciesList, starshipList} = useApiDataContext();
     const [{opacity}, drag] = useDrag(() => ({
         type: 'box', item: {
             name: character.name,
@@ -24,34 +22,7 @@ function CharacterBox({character}) {
             <AccordionSummary className="summary" sx={accordionSummaryStyle}>
                 <h4>{character.name}</h4>
             </AccordionSummary>
-            <AccordionDetails className='accordion-details'>
-                <div className='list-info'>
-                    <h4 className='list-info-name'>Name:</h4>
-                    <div className='list-info-description'>
-                        {character.name ? character.name : 'Unknown'}
-                    </div>
-                </div>
-                <div className='list-info'>
-                    <h4 className='list-info-name'>Species:</h4>
-                    <div className='list-info-description'>
-                        {character.species[0] ? speciesList[character.species[0]] : 'Unknown'}
-                    </div>
-                </div>
-                <div className='list-info'>
-                    <h4 className='list-info-name'>Movies:</h4>
-                    <ElementList
-                        elements={character.films}
-                        referenceData={filmData}
-                        classname='list-info-description'/>
-                </div>
-                <div className='list-info'>
-                    <h4 className='list-info-name'>Spaceships:</h4>
-                    <ElementList
-                        elements={character.starships}
-                        referenceData={starshipList}
-                        classname='list-info-description'/>
-                </div>
-            </AccordionDetails>
+            <AccordionDetail character={character}/>
         </Accordion>);
 }
 

@@ -2,24 +2,16 @@ import React, {useState, useEffect} from 'react';
 import '../App.css';
 import {useDrop} from 'react-dnd';
 import FavoriteCharacterBox from "./FavoriteCharacterBox";
+import {deleteCharacterElement} from "../utils";
 
 function Favorites() {
     const [favoriteCharacters, setFavoriteCharacters] = useState({data: []});
     const deleteFavorite = (characterIndex) => {
-        let firstHalf = []
-        if (characterIndex !== 0) {
-            firstHalf = favoriteCharacters.data.slice(0, characterIndex);
-        }
-        const secondHalf = favoriteCharacters.data.slice(characterIndex + 1, favoriteCharacters.data.length);
-        const newState = {
-            ...favoriteCharacters,
-            data: [...firstHalf, ...secondHalf],
-            [favoriteCharacters.data[characterIndex].url]: undefined
-        }
+        const newState = deleteCharacterElement(favoriteCharacters, characterIndex)
         setFavoriteCharacters(newState);
         localStorage.setItem("StarWarsCharaters", JSON.stringify(newState))
     }
-    const [{canDrop, isOver}, drop] = useDrop(() => ({
+    const [{canDrop}, drop] = useDrop(() => ({
         accept: 'box',
         drop: (item) => {
             setFavoriteCharacters((favoritesState) => {
@@ -40,7 +32,6 @@ function Favorites() {
             }
         },
         collect: (monitor) => ({
-            isOver: monitor.isOver(),
             canDrop: monitor.canDrop(),
         }),
     }), []);
@@ -50,21 +41,13 @@ function Favorites() {
             setFavoriteCharacters(storageState)
         }
     }, [])
-    const isActive = canDrop && isOver;
 
     return (
         <div className="favorite-page" ref={drop}>
             <h1>Your Favorites List</h1>
             <div>
                 <br/>
-                {isActive && <div style={{
-                    width: '18vw',
-                    height: '85vh',
-                    border: '3px dashed white',
-                    position: 'absolute',
-                    zIndex: -1,
-                    marginLeft: '1vw'
-                }}/>}
+                {canDrop && <div className='dragndrop-zone'/>}
             </div>
             <div className="list-wrapper">
                 {favoriteCharacters.data && favoriteCharacters.data.map((character, index) => (

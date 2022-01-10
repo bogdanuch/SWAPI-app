@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Homepage from './components/Homepage';
+import CharacterList from './components/CharacterList';
 import ScreensWrapper from './components/ScreensWrapper';
 import {ApiDataProvider} from "./libs/ApiDataProvider";
 
@@ -8,7 +8,7 @@ const App = () => {
     return (
         <ApiDataProvider>
             <ScreensWrapper>
-                <Homepage/>
+                <CharacterList/>
             </ScreensWrapper>
         </ApiDataProvider>
     );

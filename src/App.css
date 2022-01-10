@@ -3,12 +3,12 @@
     src: url("../public/StarWarsFont.ttf");
 }
 
-.homepage {
+.character-list {
     text-align: center;
     margin-left: 12vw;
 }
 
-.homepage-header {
+.character-list-header {
     text-align: center;
 }
 
@@ -70,7 +70,15 @@ h1, h3 {
     font-family: "Star Wars Font";
     color: yellow
 }
-
+.dragndrop-zone{
+    width: 18vw;
+    height: 85vh;
+    border: 3px dashed white;
+    margin-top: -4vh;
+    position: absolute;
+    z-index: -1;
+    margin-left: 1vw
+}
 .filters {
     display: flex;
     justify-content: center;

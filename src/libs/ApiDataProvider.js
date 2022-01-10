@@ -18,10 +18,10 @@ export function ApiDataProvider({children}) {
     const [starshipList, setStarshipList] = useState({dataArray: []});
     const [allCharactersData, setAllCharactersData] = useState({dataArray: []});
     useEffect(() => {
-        requestData(setFilmData, 'films', 'title',)
-        requestData(setAllCharactersData, 'people', 'name',)
         requestData(setSpeciesList, 'species', 'name')
+        requestData(setFilmData, 'films', 'title',)
         requestData(setStarshipList, 'starships', 'name',)
+        requestData(setAllCharactersData, 'people', 'name',)
     }, []);
     const value = {filmData, speciesList, starshipList, allCharactersData};
     return (

@@ -8,7 +8,7 @@ function ElementList({elements, referenceData, classname}) {
             {elements[0] ?
                 (elements.map((element) => (
                     <div key={element}>
-                        {referenceData[element]},
+                        {referenceData[element] ? referenceData[element] : 'Loading...'},
                     </div>
                 )))
                 :

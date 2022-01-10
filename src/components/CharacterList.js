@@ -7,16 +7,17 @@ import CharacterBox from "./CharacterBox";
 import {useApiDataContext} from "../libs/ApiDataProvider";
 
 const ageList = [
-    {value: {lessThan: -30, moreThan: -1000}, label: '<30BBY'},
-    {value: {lessThan: -20, moreThan: -30}, label: '>30BBY && <20BBY'},
-    {value: {lessThan: -10, moreThan: -20}, label: '>20BBY && <10BBY'},
-    {value: {lessThan: 10, moreThan: -10}, label: '>10BBY && <10ABY'},
-    {value: {lessThan: 20, moreThan: 10}, label: '>10ABY && <20ABY'},
-    {value: {lessThan: 1000, moreThan: 20}, label: '>20ABY'},
+    {value: {lessThan: -60, moreThan: -10000}, label: '<=60BBY'},
+    {value: {lessThan: -50, moreThan: -60}, label: '>60BBY && <=50BBY'},
+    {value: {lessThan: -40, moreThan: -50}, label: '>50BBY && <=40BBY'},
+    {value: {lessThan: -30, moreThan: -40}, label: '>40BBY && <=30BBY'},
+    {value: {lessThan: -20, moreThan: -30}, label: '>30BBY && <=20BBY'},
+    {value: {lessThan: -10, moreThan: -20}, label: '>20BBY && <=10BBY'},
+    {value: {lessThan: 10, moreThan: -10}, label: '>10BBY && <=10ABY'},
 ]
 const filterNoneOption = {label: '——', value: '', url: ''};
 
-function Homepage() {
+function CharacterList() {
     const {filmData, speciesList, allCharactersData} = useApiDataContext()
     const [filterOptions, setFilterOptions] = useState({film: '', species: '', age: ''});
     const [isFilterOperatorAnd, setIsFilterOperatorAnd] = useState(true);
@@ -27,8 +28,8 @@ function Homepage() {
     }
 
     return (
-        <div className="homepage">
-            <h1 className='homepage-header'>Star Wars characters list</h1>
+        <div className="character-list">
+            <h1 className='character-list-header'>Star Wars characters list</h1>
             <div className="filters">
                 <div className="filter">
                     <h1>Films</h1>
@@ -72,4 +73,4 @@ function Homepage() {
     );
 }
 
-export default Homepage;
+export default CharacterList;

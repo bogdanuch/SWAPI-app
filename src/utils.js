@@ -28,5 +28,17 @@ const requestData = async (setDataFunc, searchParam, valueKey) => {
         })
     }
 }
+const deleteCharacterElement = (array, arrayIndex) => {
+    let firstHalf = []
+    if (arrayIndex !== 0) {
+        firstHalf = array.data.slice(0, arrayIndex);
+    }
+    const secondHalf = array.data.slice(arrayIndex + 1, array.data.length);
+    return {
+        ...array,
+        data: [...firstHalf, ...secondHalf],
+        [array.data[arrayIndex].url]: undefined
+    };
+}
 
-export {parseBirthDate, requestData}
+export {parseBirthDate, requestData, deleteCharacterElement}
