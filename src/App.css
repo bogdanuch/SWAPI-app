@@ -1,38 +1,111 @@
-.App {
-  text-align: center;
+@font-face {
+    font-family: "Star Wars Font";
+    src: url("../public/StarWarsFont.ttf");
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.homepage {
+    text-align: center;
+    margin-left: 12vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.homepage-header {
+    text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.favorite-page {
+    text-align: center;
+    color: white;
+    width: 20vw;
+    border-right: 1px white solid;
+    min-height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.accordion-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.list-info {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center
+}
+
+.list-info-description {
+    font-size: 18px;
+    width: 11vw;
+    vertical-align: center;
+}
+
+.list-info-name {
+    width: 4.81vw;
+    vertical-align: center;
+    text-align: left;
+    font-size: 20px;
+}
+
+.favorite-list-info-name {
+    width: 4.81vw;
+    margin-left: -5px;
+    vertical-align: center;
+    text-align: left;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.favorite-list-info-description {
+    width: 9.3vw;
+    font-size: 16px;
+    vertical-align: center;
+}
+
+.switch-class {
+    position: absolute;
+    right: 50px;
+    top: 177px
+}
+
+h1, h3 {
+    font-family: "Star Wars Font";
+    color: yellow
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 180px;
+    margin-bottom: 80px;
+    margin-top: 30px;
+}
+
+.screen-wrapper-divider {
+    display: flex;
+    flex-direction: row;
+}
+
+.filter {
+    width: 200px;
+}
+
+.list-item {
+    width: 600px;
+    border-bottom: 2px black solid;
+}
+
+.favorite-item {
+    width: 260px;
+    border-bottom: 2px black solid;
+}
+
+.list-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.summary {
+    margin: auto;
+    line-height: 70px;
+    height: 70px;
 }
